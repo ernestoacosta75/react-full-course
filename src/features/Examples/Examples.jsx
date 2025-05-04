@@ -2,7 +2,7 @@ import { useState } from "react";
 import { EXAMPLES, CORE_CONCEPTS } from "@utils/data.js";
 import TabButton from "@features/TabButton/TabButton.jsx";
 import Section from "@features/Section/Section.jsx";
-import Tabs from "../Tabs/Tabs";
+import Tabs from "@features/Tabs/Tabs.jsx";
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState("");
@@ -25,21 +25,21 @@ export default function Examples() {
 
   return (
     <Section id="examples" title="Examples">
-      <menu>
-        <Tabs>
-            {tabContent}
-        </Tabs>
-        {CORE_CONCEPTS.map((item) => {
-            return (
-                <TabButton key={item.title}
-                isSelected={selectedTopic === item.title.toLowerCase()}
-                onClick={() => handleSelect(item.title)}>
-                {item.title}
-              </TabButton>        
-            );
+      <Tabs
+        buttons={CORE_CONCEPTS.map((item) => {
+          return (
+            <TabButton
+              key={item.title}
+              isSelected={selectedTopic === item.title.toLowerCase()}
+              onSelect={() => handleSelect(item.title)}
+            >
+              {item.title}
+            </TabButton>
+          );
         })}
-      </menu>
-      
+      >
+        {tabContent}
+      </Tabs>
     </Section>
   );
 }
