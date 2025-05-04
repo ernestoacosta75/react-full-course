@@ -38,16 +38,16 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleSelect(CORE_CONCEPTS[0].title)}>
+            <TabButton isSelected={selectedTopic === CORE_CONCEPTS[0].title.toLowerCase()} onSelect={() => handleSelect(CORE_CONCEPTS[0].title)}>
               Components
             </TabButton>
-            <TabButton onSelect={() => handleSelect(CORE_CONCEPTS[1].title)}>
+            <TabButton isSelected={selectedTopic === CORE_CONCEPTS[1].title.toLowerCase()} onSelect={() => handleSelect(CORE_CONCEPTS[1].title)}>
               JSX
             </TabButton>
-            <TabButton onSelect={() => handleSelect(CORE_CONCEPTS[2].title)}>
+            <TabButton isSelected={selectedTopic === CORE_CONCEPTS[2].title.toLowerCase()} onSelect={() => handleSelect(CORE_CONCEPTS[2].title)}>
               Props
             </TabButton>
-            <TabButton onSelect={() => handleSelect(CORE_CONCEPTS[3].title)}>
+            <TabButton isSelected={selectedTopic === CORE_CONCEPTS[3].title.toLowerCase()} onSelect={() => handleSelect(CORE_CONCEPTS[3].title)}>
               State
             </TabButton>
           </menu>
