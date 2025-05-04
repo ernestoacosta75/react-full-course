@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { EXAMPLES, CORE_CONCEPTS } from "@utils/data.js";
 import TabButton from "@features/TabButton/TabButton.jsx";
+import Section from "@features/Section/Section.jsx";
+import Tabs from "../Tabs/Tabs";
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState("");
@@ -22,35 +24,22 @@ export default function Examples() {
   );
 
   return (
-    <section id="examples">
-      <h2>Examples</h2>
+    <Section id="examples" title="Examples">
       <menu>
-        <TabButton
-          isSelected={selectedTopic === CORE_CONCEPTS[0].title.toLowerCase()}
-          onSelect={() => handleSelect(CORE_CONCEPTS[0].title)}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === CORE_CONCEPTS[1].title.toLowerCase()}
-          onSelect={() => handleSelect(CORE_CONCEPTS[1].title)}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === CORE_CONCEPTS[2].title.toLowerCase()}
-          onSelect={() => handleSelect(CORE_CONCEPTS[2].title)}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === CORE_CONCEPTS[3].title.toLowerCase()}
-          onSelect={() => handleSelect(CORE_CONCEPTS[3].title)}
-        >
-          State
-        </TabButton>
+        <Tabs>
+            {tabContent}
+        </Tabs>
+        {CORE_CONCEPTS.map((item) => {
+            return (
+                <TabButton key={item.title}
+                isSelected={selectedTopic === item.title.toLowerCase()}
+                onClick={() => handleSelect(item.title)}>
+                {item.title}
+              </TabButton>        
+            );
+        })}
       </menu>
-      {tabContent}
-    </section>
+      
+    </Section>
   );
 }
