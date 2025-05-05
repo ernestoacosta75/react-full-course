@@ -1,4 +1,4 @@
-import './CoreConcept.css';
+import '@features/CoreConcept/CoreConcept.css';
 
 function CoreConcept({image, title, description}) {
     return (
